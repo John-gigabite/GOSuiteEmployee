@@ -1,4 +1,4 @@
-# GOSuiteEmployee (Employee Managment Software with .Net version 8}
+# GOSuiteEmployee (Employee Managment Software with .Net version 8)
 Web Application to manage the employees of a clients business. Services will include:
 *  Promoting
 *  Letting go
