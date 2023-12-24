@@ -1,0 +1,78 @@
+﻿@model IEnumerable<GOSuiteEmployee.Models.Employee>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<form asp-action="Index" method="get">
+    <div class="form-group">
+        <label for="searchString">Search by Name:</label>
+        <input type="text" name="searchString" value="" />
+        <input type="submit" value="Search" class="btn btn-success" />
+    </div>
+</form>
+<hr />
+<p>
+    <a asp-action="Index" style="padding-right: 50px;" class="btn btn-primary">Back to Full List</a>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParam"]">
+                    @Html.DisplayNameFor(model => model.EmployeeName)
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["EmployeeIDParam"]">
+                    @Html.DisplayNameFor(model => model.EmployeeId)
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["TitleSortParam"]">
+                    @Html.DisplayNameFor(model => model.Title)
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["SalarySortParam"]">
+                    @Html.DisplayNameFor(model => model.Salary)
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["TenureSortParam"]">
+                    @Html.DisplayNameFor(model => model.Tenure)
+                </a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salary)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tenure)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class=" btn btn-success"><i class="bi bi-pencil-square"></i>Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class=" btn btn-success">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class=" btn btn-danger">Let Go/Terminate</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
